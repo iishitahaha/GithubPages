@@ -1,0 +1,30 @@
+name: 'Deploy to GitHub Pages'
+on:
+    push:
+        branches:
+            - main
+            - development
+        paths:
+            - 'index.html'
+
+jobs:
+    deploy:
+        runs-on: ubuntu-latest
+        
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v2
+            
+            - name: Set up Node.js (to use the `gh-pages` package)
+              uses: actions/setup-node@v2
+              with:
+               node-version: '14'
+
+            - name: Install gh-pages package
+              run: npm install --save-dev gh-pages
+
+            - name: Build and deploy to GitHub Pages
+              run: |
+                npx gh-pages -d .
+            #   env:
+            #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
