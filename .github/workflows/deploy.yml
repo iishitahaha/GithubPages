@@ -25,6 +25,6 @@ jobs:
 
             - name: Build and deploy to GitHub Pages
               run: |
-                npx gh-pages -d ./  # Deploy the contents of the current directory
+                npx gh-pages -d ./
             #   env:
             #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
